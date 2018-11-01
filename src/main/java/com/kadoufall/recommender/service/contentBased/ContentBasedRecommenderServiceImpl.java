@@ -70,13 +70,16 @@ public class ContentBasedRecommenderServiceImpl implements ContentBasedRecommend
     @PostConstruct
     public void init() {
         try {
-           this.dataModel = new MySQLBooleanPrefJDBCDataModel(
-                   dataSource,
-                   this.tableName,
-                   this.userColumn,
-                   this.itemColumn,
-                   this.prefColumn
-           );
+            this.dataModel = new MySQLBooleanPrefJDBCDataModel(
+                    dataSource,
+                    this.tableName,
+                    this.userColumn,
+                    this.itemColumn,
+                    this.prefColumn
+            );
+
+            // 注意需要先在 TrainVsmModel 中训练
+            this.initParagraphVectors();
 
             // TODO: 移除 dataModel 中过期的用户浏览新闻行为，这些行为对计算用户相似度不再具有较大价值
 

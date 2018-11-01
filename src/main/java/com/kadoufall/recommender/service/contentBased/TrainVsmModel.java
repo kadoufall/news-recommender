@@ -24,8 +24,8 @@ public class TrainVsmModel {
 
     public static void main(String[] args) {
         try {
-//             train();
-            test();
+            train();
+            // test();
         } catch (Exception e) {
             e.printStackTrace();
         }
